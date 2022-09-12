@@ -1,12 +1,8 @@
 # README
 
-# artHouse
+# Great Artist
 
-[artHouse live][heroku]
-
-[heroku]: https://arthouse.herokuapp.com/#/signup
-
-artHouse is a full-stack web application modeled after Instagram.  This app is designed for artists to post their work with the social media aspect of users being able to follow artists they find, and like posts they favor.  I am planning on adding a bid or buy feature so followers can buy pieces from artists directly.  artHouse uses Ruby on Rails for the backend, a PostgreSQL database, and React/Redux architectural framework on the frontend.
+Great Artist is a full-stack web application modeled after Instagram.  This app is designed for artists to post their work with the social media aspect of users being able to follow artists they find, and like posts they favor.  I am planning on adding a bid or buy feature so followers can buy pieces from artists directly.  Great Artist uses Ruby on Rails for the backend, a PostgreSQL database, and React/Redux architectural framework on the frontend.
 
 ## Features & Implementation
 
@@ -14,7 +10,6 @@ artHouse is a full-stack web application modeled after Instagram.  This app is d
 
 The artHouse feed only displays the current users posts and posts of artists the current user follows. On the backend I leverage associations between the users, follows, posts, comments and likes tables.  After log in, an API call is made to join the users table with follows table on `follower_id` using `.includes()` to avoid N + 1 queueing when iterating through `followed_artists` to grab all posts, map over `post_id`'s, `like_id`'s and `comment_id`'s.  Each post in the post slice of state holds arrays of their `like_id`'s and `comment_id`'s to keep a normalized state.  These id's are references when rendering each posts comment index and to persist likes.  On the front end a selector puts these post objects into an array and sorts they by the `create_at` to keep the feed in order.
 
-![image of feed](screenshots/feed.png)
 
 When a new user signs up and is not following any artists yet, they are redirected to a welcome/Discover page instead of going to the feed so they have a chance to check out some of the top artists artHouse has to offer.  
 
@@ -27,9 +22,6 @@ componentDidMount() {
   }
 }
 ```
-
-![image of welcome](screenshots/welcome.png)
-
 
 ### Drag & Drop image uploading with preview
 
@@ -74,14 +66,6 @@ switch(followState) {
   );
 }
 ```
-
-
-
-![image of edit](screenshots/edit.png)
-![image of following](screenshots/following.png)
-![image of follow](screenshots/follow.png)
-
-
 
 ## Future Directions for the Project
 
